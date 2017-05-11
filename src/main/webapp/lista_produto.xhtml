@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+	<title>Loja Virtual</title>
+</h:head>
+
+<h:body styleClass="body">
+	<div></div>
+	<h:form>
+		<div align="center">
+			<h:commandButton class="btn btn-danger btn-block"
+				value="Cadastrar Novo Produto" action="#{produtoCtrl.actionInserir}" />
+
+			<h:dataTable class="table table-striped"
+				value="#{produtoCtrl.listagem}" var="produto">
+				<f:facet name="header">
+					<h2 align="center">
+						<h:outputLabel value="Lista de Produtos" />
+					</h2>
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Código" />
+					</f:facet>
+					<h:outputLabel value="#{produto.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome" />
+					</f:facet>
+					<h:outputLabel value="#{produto.nome}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Preço" />
+					</f:facet>
+					<h:outputLabel value="#{produto.preco}">
+						<f:convertNumber pattern="#0.00" />
+					</h:outputLabel>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Alterar" />
+					</f:facet>
+					<h:commandLink action="#{produtoCtrl.actionAlterar(produto)}">
+						<h:graphicImage library="imagem" name="pencil.png" title="Alterar" />
+					</h:commandLink>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Excluir" />
+					</f:facet>
+					<h:commandLink action="#{produtoCtrl.actionExcluir(produto)}">
+						<h:graphicImage library="imagem" name="apagar.png" title="Apagar" />
+					</h:commandLink>
+				</h:column>
+
+			</h:dataTable>
+			<div align="center">
+				<h:commandButton class="btn btn-danger btn-block" value="Voltar"
+					action="index" />
+
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

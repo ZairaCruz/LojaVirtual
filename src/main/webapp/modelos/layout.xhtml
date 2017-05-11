@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+	<title>Loja Virtual</title>
+</h:head>
+<h:body>
+	<p:layout style="min-width:400px;min-height:200px;">
+		<p:layoutUnit position="west" resizable="true" size="100" minSize="40"
+			maxSize="200">
+			<div>
+				<ui:insert name="cabecalho">
+					<ui:include src="/modelos/cabecalho.xhtml" />
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<div>
+				<ui:insert name="conteudo">
+					<ui:include src="/modelos/conteudo.xhtml" />
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+	</p:layout>
+	<p:panel style="margin-top:6px;">
+	<div id="footer">
+		<ui:insert name="rodape">
+			<ui:include src="/modelos/rodape.xhtml" />
+		</ui:insert>
+	</div>
+	</p:panel>
+	
+
+</h:body>
+
+</html>

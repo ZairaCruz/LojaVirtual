@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+	<title>Loja Virtual</title>
+</h:head>
+<h:body styleClass="body">
+	<div align="center">
+		<h2>Cadastro de Produtos</h2>
+		<h:form>
+			<div class="form-group">
+				<h:panelGrid>
+					<h:outputLabel value="Código" />
+					<h:inputText readonly="true" class="form-control"
+						value="#{produtoCtrl.produto.id}" />
+					<h:outputLabel value="Nome" />
+					<h:inputText class="form-control"
+						value="#{produtoCtrl.produto.nome}" />
+					<h:outputLabel value="Preço" />
+					<h:inputText class="form-control"
+						value="#{produtoCtrl.produto.preco}">
+						<f:convertNumber minFractionDigits="2" />
+					</h:inputText>
+				</h:panelGrid>
+			</div>
+			<div class="btn-group btn-group">
+				<h:commandButton class="btn btn-danger" value="Gravar"
+					action="#{produtoCtrl.actionGravar}" />
+				<h:commandButton class="btn btn-danger" value="Voltar"
+					action="lista_produto" />
+
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>

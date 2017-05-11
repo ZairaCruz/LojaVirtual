@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+	<title>Loja Virtual</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div align="center">
+			<h2><h:commandLink action="#{pessoaCtrl.actionInserir}"
+				value="Cadastrar Nova Pessoa" /></h2>
+
+			<h:dataTable value="#{pessoaCtrl.listagem}" var="pessoa" border="2">
+				<f:facet name="header">
+					<h2 align="center">
+						<h:outputLabel value="Lista de Pessoas" />
+					</h2>
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Id" />
+					</f:facet>
+					<h:outputLabel value="#{pessoa.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome" />
+					</f:facet>
+					<h:outputLabel value="#{pessoa.nome}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="CPF" />
+					</f:facet>
+					<h:outputLabel value="#{pessoa.cpf}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Tipo" />
+					</f:facet>
+					<h:outputLabel value="#{pessoa.tipo}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="E-mail" />
+					</f:facet>
+					<h:outputLabel value="#{pessoa.email}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Alterar" />
+					</f:facet>
+					<h:commandLink action="#{pessoaCtrl.actionAlterar(pessoa)}"
+						value="Alterar" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Excluir" />
+					</f:facet>
+					<h:commandLink action="#{pessoaCtrl.actionExcluir(pessoa)}"
+						value="Excluir" />
+				</h:column>
+			</h:dataTable>
+			<div align="center">
+				<h:commandButton value="Voltar" class="btn" action="index" />
+
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

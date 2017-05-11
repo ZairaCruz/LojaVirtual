@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#rodape{
+	width: auto;
+	/*acima, direita, abaixo, esquerda*/
+	margin: 40px auto 40px auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+	/*margem interna*/
+	padding: 10px;
+	font-size: 0.8em;
+	color: #ffffff;
+	text-align: center;
+	border: 7px solid #0960A3;
+	background-color: #0960A3;
+
+	
+}

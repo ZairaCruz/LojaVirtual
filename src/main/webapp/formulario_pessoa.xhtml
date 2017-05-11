@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+
+	<title>Loja Virtual</title>
+</h:head>
+<h:body styleClass="body">
+	<h:form>
+
+		<h2>Cadastro de Pessoas</h2>
+		<div class="form-horizontal">
+			<h:outputLabel value="Nome" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.nome}" />
+
+			<h:outputLabel value="Cpf" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.cpf}" />
+
+			<h:outputLabel value="Rg" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.rg}" />
+
+			<h:outputLabel value="Data de Nascimento" />
+			<h:inputText class="form-control"
+				value="#{pessoaCtrl.pessoa.data_nasc}">
+				<f:convertDateTime dateStyle="short" />
+			</h:inputText>
+
+			<h:outputLabel value="Rua" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.rua}" />
+
+			<h:outputLabel value="Bairro" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.bairro}" />
+
+			<h:outputLabel value="CEP" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.cep}" />
+
+			<h:outputLabel for="estado" value="Estado:" />
+			<p:selectOneMenu id="estado"
+				value="#{pessoaCtrl.pessoa.estado.est_id}" style="width:180px">
+
+				<f:selectItem itemLabel="Selecione o estado:"
+					itemValue="#{pessoaCtrl.pessoa.estado.est_id}" />
+				<p:ajax update="cidade" />
+				<f:selectItems value="#{pessoaCtrl.listaEstados}" var="estado"
+					itemValue="#{estado.est_id}" itemLabel="#{estado.est_sigla}" />
+			</p:selectOneMenu>
+
+
+			<h:outputLabel for="cidade" value="Cidade:" />
+			<p:selectOneMenu id="cidade"
+				value="#{pessoaCtrl.pessoa.cidade.cid_id}" style="width:180px">
+
+				<f:selectItem itemLabel="Selecione a cidade:"
+					itemValue="#{pessoaCtrl.pessoa.cidade.cid_id}" />
+				<f:selectItems value="#{pessoaCtrl.listaCidades}" var="cidade"
+					itemValue="#{cidade.cid_id}" itemLabel="#{cidade.cid_nome}" />
+			</p:selectOneMenu>
+
+
+			<h:outputLabel value="E-mail" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.email}" />
+
+			<h:outputLabel value="Senha" />
+			<h:inputSecret class="form-control"
+				value="#{pessoaCtrl.pessoa.senha}" />
+
+			<h:outputLabel value="Tipo" />
+			<h:inputText class="form-control" value="#{pessoaCtrl.pessoa.tipo}" />
+
+			<h:dataTable class="table table-striped"
+				value="#{pessoaCtrl.pessoa.fones}" var="fone" rules="rows">
+				<f:facet name="header">
+					<h:commandButton value="Adicionar Fone"
+						action="#{pessoaCtrl.actionInserirFone}" />
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Número" />
+					</f:facet>
+					<h:inputText value="#{fone.numero}" size="20" maxlength="20" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Descrição" />
+					</f:facet>
+					<h:inputText value="#{fone.descricao}" size="30" maxlength="30" />
+				</h:column>
+
+				<h:column>
+					<h:commandLink value="Remover"
+						action="#{pessoaCtrl.actionExcluirFone(fone)}" />
+				</h:column>
+			</h:dataTable>
+
+		</div>
+
+
+		<h:commandButton class="btn" value="Gravar"
+			action="#{pessoaCtrl.actionGravar}" />
+
+		<h:commandButton class="btn" value="Lista de Pessoas"
+			action="#{pessoaCtrl.voltar}" />
+
+
+	</h:form>
+</h:body>
+</html>
