@@ -36,6 +36,7 @@
 		<mapping class="beans.Estado"/>
 		<mapping class="beans.Cidade"/>
 		<mapping class="beans.FormaPagamento"/>
+		<mapping class="beans.Fabricante"/>
 		
 	</session-factory>
 </hibernate-configuration>

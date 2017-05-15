@@ -6,20 +6,20 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.AjaxBehaviorEvent;
 
 import beans.Cidade;
 import beans.Estado;
 import persistencia.EstadoCidadeDAO;
 
+@SuppressWarnings("unchecked")
 @ManagedBean
 @SessionScoped
 public class EstadoCidadeCtrl implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private final EstadoCidadeDAO dao = new EstadoCidadeDAO();
-	private List estados;
-	private List cidades;
+	private List<Estado> estados;
+	private List<Cidade> cidades;
 	private Cidade cidade = new Cidade();
 	private Estado estado = new Estado();
 
@@ -27,25 +27,24 @@ public class EstadoCidadeCtrl implements Serializable {
 	public void init() {
 		estados = dao.consultaTodosEstados();
 	}
-
-	@PostConstruct
-	public void listaCidades(AjaxBehaviorEvent event) {
+	
+	public void listaCidades() {
 		cidades = dao.consultaCidades(estado);
 	}
 
-	public List getEstados() {
+	public List<Estado> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(List estados) {
+	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
 	}
 
-	public List getCidades() {
+	public List<Cidade> getCidades() {
 		return cidades;
 	}
 
-	public void setCidades(List cidades) {
+	public void setCidades(List<Cidade> cidades) {
 		this.cidades = cidades;
 	}
 

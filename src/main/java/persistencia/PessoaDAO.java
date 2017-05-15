@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import beans.FormaPagamento;
 import beans.Pessoa;
 
 public class PessoaDAO implements Serializable {
@@ -52,5 +53,12 @@ public class PessoaDAO implements Serializable {
 		return lista;
 	}
 	
+	public static FormaPagamento pesquisaId(int valor){
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Query consulta = sessao.createQuery("from Pessoa where id = :parametro");
+		consulta.setInteger("parametro", valor);
+		sessao.close();
+		return (FormaPagamento)consulta.uniqueResult();
+	}
 
 }

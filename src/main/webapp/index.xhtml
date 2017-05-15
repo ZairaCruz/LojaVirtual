@@ -16,13 +16,22 @@
 		<ui:define name="conteudo">
 			<h:form>
 				<div>
-					<h:commandLink value="Cadastrar Cliente"
+					<h:commandLink value="Cliente"
 						action="#{pessoaCtrl.actionInserir}" />
 				</div>
 				<div>
-					<h:commandLink value="Lista de produtos"
-						action="lista_produto" />
+					<h:commandLink value="Produtos"
+						action="#{produtoCtrl.actionInserir}" />
 				</div>
+				<div>
+					<h:commandLink value="Forma de pagamento"
+						action="#{formaPagamentoCtrl.actionInserir}" />
+				</div>
+				<div>
+					<h:commandLink value="Fabricante"
+						action="#{fabricanteCtrl.actionInserir}" />
+				</div>
+				
 			</h:form>
 
 		</ui:define>

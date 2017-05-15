@@ -45,21 +45,19 @@
 					<p:selectOneMenu id="estado" value="#{estadoCidadeCtrl.estado}"
 						required="true" requiredMessage="Campo obrigatório"
 						converter="estadoConverter" style="width:180px">
-						<f:selectItem itemLabel="Selecione o estado:" />
+						<f:selectItem itemLabel="Selecione o estado:" noSelectionOption="true"/>
 						<p:ajax render="cidade" event="change"
-							listener="#{estadoCidadeCtrl.listaCidades}" />
+							listener="#{estadoCidadeCtrl.listaCidades}" update="cidade"/>
 						<f:selectItems value="#{estadoCidadeCtrl.estados}" var="estado"
 							itemValue="#{estado}" itemLabel="#{estado.est_sigla}" />
 						
 					</p:selectOneMenu>
 
 					<h:outputLabel for="cidade" value="Cidade:" />
-					<p:selectOneMenu id="cidade" value="#{estadoCidadeCtrl.cidade}"
+					<p:selectOneMenu id="cidade" value="#{estadoCidadeCtrl.cidade}" filter="true"
 						required="true" requiredMessage="Campo obrigatório"
 						converter="cidadeConverter" style="width:180px">
-						<p:ajax render="cidade" event="change"
-							listener="#{estadoCidadeCtrl.listaCidades}" />
-						<f:selectItem itemLabel="Selecione a cidade:" />
+						<f:selectItem itemLabel="Selecione a cidade:" noSelectionOption="true"/>
 						<f:selectItems value="#{estadoCidadeCtrl.cidades}" var="cidade"
 							itemValue="#{cidade}" itemLabel="#{cidade.cid_nome}" />
 					</p:selectOneMenu>

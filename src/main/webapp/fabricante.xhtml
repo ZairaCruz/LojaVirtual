@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+	<title>Loja Virtual</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+	<p:growl id="msgs" showDetail="true" />
+		<p:panel header="Listagem de Fabricantes">
+			<p:dataTable id="tbl" var="f" value="#{fabricanteCtrl.listagem}"
+				emptyMessage="Nenhum registro encontrado." paginator="true"
+				style="margin-bottom:20px">
+				<f:facet name="header">
+					<p:commandButton value="Inserir" icon="icon-novo"
+						actionListener="#{fabricanteCtrl.actionInserir}"
+						oncomplete="PF('cadDialog').show()" update=":form:cadDetail">
+					</p:commandButton>
+				</f:facet>
+				<f:facet name="footer">
+					<p:commandButton value="Sair" action="index" />
+				</f:facet>
+
+				<p:column headerText="Código" sortBy="f.id">
+					<f:facet name="header">
+						<h:outputLabel value="Código" />
+					</f:facet>
+					<h:outputLabel value="#{f.id}" />
+				</p:column>
+				<p:column headerText="Nome" sortBy="f.nome">
+					<f:facet name="header">
+						<h:outputLabel value="Nome" />
+					</f:facet>
+					<h:outputLabel value="#{f.nome}" />
+				</p:column>
+
+
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update=":form:cadDetail"
+						oncomplete="PF('cadDialog').show()" icon="ui-icon-search"
+						title="View">
+						<f:setPropertyActionListener value="#{f}"
+							target="#{fabricanteCtrl.fabricante}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			<p:dialog header="Cadastro de Fabricante" widgetVar="cadDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
+				closeListener="#{fabricanteCtrl.handleClose}">
+				<p:outputPanel id="cadDetail" style="text=align:center;">
+					<p:panelGrid columns="2" style="text-align: left">
+						<p:outputLabel value="Código" />
+						<p:inputText value="#{fabricanteCtrl.fabricante.id}" size="6"
+							maxlength="10" readonly="true" />
+						<p:outputLabel value="Nome" />
+						<p:inputText value="#{fabricanteCtrl.fabricante.nome}" 
+							maxlength="60" />
+					</p:panelGrid>
+					<p:panelGrid columns="3" style="text=align:center;">
+						<p:commandButton value="Excluir"
+							action="#{fabricanteCtrl.actionExcluir}" update="growl" />
+						<p:commandButton value="Gravar"
+							action="#{fabricanteCtrl.actionGravar}" update="growl" />
+						<p:commandButton value="Cancelar" oncomplete="cadDialog.hide()" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>

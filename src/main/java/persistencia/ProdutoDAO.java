@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import beans.FormaPagamento;
 import beans.Produto;
 
 public class ProdutoDAO implements Serializable {
@@ -45,7 +46,7 @@ public class ProdutoDAO implements Serializable {
 		}
 		else{
 			consulta = sessao.createQuery("from Produto "
-					+ "where nome like :paramentro order by nome");
+					+ "where nome like :parametro order by nome");
 			consulta.setString("parametro", "%" + filtro + "%");
 		}
 		List lista = consulta.list();
@@ -53,5 +54,11 @@ public class ProdutoDAO implements Serializable {
 		return lista;
 	}
 	
-
+	public static FormaPagamento pesquisaId(int valor){
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Query consulta = sessao.createQuery("from Produto where id = :parametro");
+		consulta.setInteger("parametro", valor);
+		sessao.close();
+		return (FormaPagamento)consulta.uniqueResult();
+	}
 }

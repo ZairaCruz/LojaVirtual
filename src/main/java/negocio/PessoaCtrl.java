@@ -16,7 +16,7 @@ import persistencia.PessoaDAO;
 @SessionScoped
 public class PessoaCtrl implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3535205073016760215L;
 	private Pessoa pessoa;
 	private Fone fone;
 
@@ -33,7 +33,7 @@ public class PessoaCtrl implements Serializable {
 	}
 	
 	public String actionGravar(){
-		if(pessoa.getId() == 0){
+		if(pessoa.getId() == null){
 			PessoaDAO.inserir(pessoa);
 			return actionInserir();
 		}else{

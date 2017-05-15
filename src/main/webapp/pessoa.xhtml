@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+
+	<title>Loja Virtual</title>
+</h:head>
+<h:body>
+	<ui:composition template="/modelos/layout.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<p:panel header="Listagem de Pessoas">
+					<p:dataTable emptyMessage="Nenhum registro encontrado."
+						paginator="true">
+						<f:facet name="header">
+							<p:commandButton value="Novo Produto"
+								oncomplete="PF('dialogo').show();" />
+						</f:facet>
+						<f:facet name="footer">
+							<p:commandButton value="Sair" action="index" />
+						</f:facet>
+						<p:column headerText="Imagem">
+
+						</p:column>
+						<p:column headerText="Código"></p:column>
+						<p:column headerText="Nome">
+							<f:facet name="header">
+								<h:outputLabel value="Nome" />
+							</f:facet>
+							<h:outputLabel value="#{produto.nome}" />
+						</p:column>
+						<p:column headerText="Preço">
+							<f:facet name="header">
+								<h:outputLabel value="Nome" />
+							</f:facet>
+							<h:outputLabel value="#{produto.nome}" />
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			<p:dialog header="Cadastro de Produtos" widgetVar="dialogo"
+				draggable="false" resizable="false" closable="false">
+				<h:form>
+					<p:panelGrid columns="2">
+						<p:outputLabel value="Nome do produto:" />
+						<p:inputText maxlength="60" />
+						<p:outputLabel value="Descrição do Produto:" />
+						<p:inputText />
+						
+						<p:outputLabel value="Fabricante:" />
+						<p:selectOneMenu filter="true">
+							<f:selectItem itemValue="" itemLabel="Selecione Fabricante" />
+						</p:selectOneMenu>
+						
+						<p:outputLabel value="Preço:" />
+						<p:inputText maxlength="7" size="10" />
+						
+						<p:outputLabel value="Quantidade:" />
+						<p:inputText maxlength="5" size="10" />
+						
+					</p:panelGrid>
+					<p:panelGrid style="margin-top: 20px;">
+						<p:commandButton value="Salvar" />
+						<p:commandButton value="Fechar" oncomplete="PF('dialogo).hide();" />
+					</p:panelGrid>
+				</h:form>
+			</p:dialog>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+

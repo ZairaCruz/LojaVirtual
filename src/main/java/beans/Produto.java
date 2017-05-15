@@ -16,7 +16,8 @@ public class Produto {
 	
 	@Column(name = "preco", nullable = true)
 	private float preco;
-
+	
+//	@Column(name = )
 	public int getId() {
 		return id;
 	}

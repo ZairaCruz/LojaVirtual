@@ -20,24 +20,7 @@ public class FormaPagamentoCtrl implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private FormaPagamento formaPagamento = new FormaPagamento();
-	private String filtro = "";
 		
-	public FormaPagamento getFormaPagamento() {
-		return formaPagamento;
-	}
-
-	public void setFormaPagamento(FormaPagamento formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
-
-	public String getFiltro() {
-		return filtro;
-	}
-
-	public void setFiltro(String filtro) {
-		this.filtro = filtro;
-	}
-
 	public List<FormaPagamento> getListagem(){
 		return FormaPagamentoDAO.listagem("");
 	}
@@ -81,5 +64,12 @@ public class FormaPagamentoCtrl implements Serializable {
             event.getComponent().getId() + " closed", "So you don't like nature?");   
         facesContext.addMessage(null, message);   
     }   
+	public FormaPagamento getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(FormaPagamento formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
 }
 
